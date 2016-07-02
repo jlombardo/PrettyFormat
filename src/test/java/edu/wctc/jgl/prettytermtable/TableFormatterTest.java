@@ -33,7 +33,7 @@ public class TableFormatterTest {
      * test will ALWAYS pass.
      */
     @Test
-    public void testOutputData() {
+    public void testToFormattedStr() {
         String[][] testData = {
             {"Part No","Description","Qty","Unit Cost","Ext. Price"},
             {"-------","-----------","---","---------","----------"},
@@ -45,7 +45,8 @@ public class TableFormatterTest {
             JustifyDirection.RIGHT,JustifyDirection.RIGHT,
             JustifyDirection.RIGHT
         };
-        formatter.outputData(testData, pads, 2);
+        String strFormatted = formatter.toFormattedStr(testData, pads, 2);
+        System.out.println(strFormatted);
     }
 
     /**

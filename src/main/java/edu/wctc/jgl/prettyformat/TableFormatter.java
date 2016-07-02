@@ -10,15 +10,19 @@ import java.util.StringJoiner;
 public class TableFormatter {
     
     /**
-     * Outputs table to console with properly justified and spaced columns.
+     * Formats table to with properly justified and spaced columns.
      * 
      * @param data a 2D array of row/col data
      * @param justifyDir a 1D array of JustifyDirection options for each
      * column
      * @param spacers number of spaces to use between columns
+     * @return table formatted as one large String to be used by an output 
+     * component
      */
-    public void outputData(String[][] data, 
+    public String toFormattedStr(String[][] data, 
             JustifyDirection[] justifyDir, int spacers) {
+        
+        StringBuilder sb = new StringBuilder();
         
         // How many columns do we have
         int cols = data[0].length;
@@ -56,9 +60,11 @@ public class TableFormatter {
             for(int col = 0; col < cols; col++) {
                 sj.add(data[row][col]);
             }
-            System.out.println(sj.toString());
+            sb.append(sj.toString()).append("\n");
             sj = new StringJoiner(spacing);
         }
+        
+        return sb.toString();
     }
     
     /**
