@@ -1,5 +1,7 @@
 package edu.wctc.jgl.prettyformat;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.StringJoiner;
 
 /**
@@ -71,32 +73,24 @@ public class TableFormatter {
      * Gets the length of the longest line in a collection of lines
      * @param data a collection of lines
      * @return the length of the longest line
+     * @since JDK 1.8
      */
     public int getLongestLineLength(String[] data) {
-        String longestLine = data[0];
-        
-        for(int i=0; i < data.length; i++) {
-            if(data[i].length() > longestLine.length()) {
-                longestLine = data[i]; 
-            }
-        }
-        
-        return longestLine.length();
+          return Arrays.stream(data)
+                  .max(Comparator.comparing(item -> item.length()))
+                  .get().length();
     }
     
     /**
      * Left justifies a collection of column data per row
      * @param data a collection of column data per row
      * @return a justified collection
+     * @since JDK 1.8
      */
     public String[] leftJustifyData(String[] data) {
-        String longestLine = data[0];
-        
-        for(int i=0; i < data.length; i++) {
-            if(data[i].length() > longestLine.length()) {
-                longestLine = data[i]; 
-            }
-        }
+        String longestLine = Arrays.stream(data)
+                  .max(Comparator.comparing(item -> item.length()))
+                  .get();
         
         for(int i=0; i < data.length; i++) {
             int pads = longestLine.length() - data[i].length();
@@ -112,15 +106,12 @@ public class TableFormatter {
      * Right justifies a collection of column data per row
      * @param data a collection of column data per row
      * @return a justified collection
+     * @since JDK 1.8
      */
     public String[] rightJustifyData(String[] data) {
-        String longestLine = data[0];
-        
-        for(int i=0; i < data.length; i++) {
-            if(data[i].length() > longestLine.length()) {
-                longestLine = data[i]; 
-            }
-        }
+        String longestLine = Arrays.stream(data)
+                  .max(Comparator.comparing(item -> item.length()))
+                  .get();
         
         for(int i=0; i < data.length; i++) {
             int pads = longestLine.length() - data[i].length();
