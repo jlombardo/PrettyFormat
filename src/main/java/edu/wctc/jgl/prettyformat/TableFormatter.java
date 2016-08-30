@@ -29,7 +29,7 @@ public class TableFormatter {
         // How many columns do we have
         int cols = data[0].length;
         
-        // justify each column according to spec in padLocs
+        // justify each data column according to spec in justifyDir and spacers
         for(int colNo=0; colNo < cols; colNo++) {
             // first gather column data into a temp array
             String[] colData = new String[data.length];
@@ -82,7 +82,7 @@ public class TableFormatter {
     }
     
     /**
-     * Left justifies a collection of column data per row
+     * Left justifies a collection of column data per row with padding
      * @param data a collection of column data per row
      * @return a justified collection
      * @since JDK 1.8
@@ -103,7 +103,7 @@ public class TableFormatter {
     }
 
     /**
-     * Right justifies a collection of column data per row
+     * Right justifies a collection of column data per row with padding
      * @param data a collection of column data per row
      * @return a justified collection
      * @since JDK 1.8
