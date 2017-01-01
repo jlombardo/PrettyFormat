@@ -83,7 +83,7 @@ public class TableFormatter {
      */
     public String getLongestLine(String[] data) {
           return Arrays.stream(data)
-                  .max(Comparator.comparing(item -> item.length()))
+                  .max(Comparator.comparingInt(String::length))
                   .get();
     }
     
