@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 /**
  * Provides behaviors for outputting nicely formatted tabular data.
  * 
- * @author Jim Lombardo, jlombardo@wctc.edu
+ * @author Jim Lombardo, jlombardo@wctc.edu 
  */
 public class TableFormatter {
     
@@ -30,7 +30,8 @@ public class TableFormatter {
             throw new IllegalArgumentException("JustifyDirection options don't match column length");
         }
         
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = 
+                new StringBuilder();
         
         // How many columns do we have
         int cols = data[0].length;
