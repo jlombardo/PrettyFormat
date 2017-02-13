@@ -1,6 +1,6 @@
 package edu.wctc.jgl.prettytermtable;
 
-import edu.wctc.jgl.prettyformat.TableFormatter;
+import edu.wctc.jgl.prettyformat.TableFormatter2;
 import edu.wctc.jgl.prettyformat.JustifyDirection;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * @author jlombardo
  */
 public class TableFormatterTest {
-    private TableFormatter formatter;
+    private TableFormatter2 formatter;
     
     private String[][] goodTestData1 = {
             {"Part No","Description","Qty","Unit Cost","Ext. Price"},
@@ -41,7 +41,7 @@ public class TableFormatterTest {
     
     @Before
     public void setUp() {
-        formatter = new TableFormatter();        
+        formatter = new TableFormatter2();        
     }
 
     /**

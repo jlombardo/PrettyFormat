@@ -9,7 +9,7 @@ import java.util.StringJoiner;
  * 
  * @author Jim Lombardo, jlombardo@wctc.edu 
  */
-public class TableFormatter {
+public class TableFormatter2 {
     
     /**
      * Formats table to with properly justified and spaced columns.
