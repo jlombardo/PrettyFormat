@@ -1,6 +1,6 @@
 PrettyFormat - a Java library to format output in various, pretty ways. 
 
-Copyright (C) 2016 James G. Lombardo.
+Copyright (C) 2016-17 James G. Lombardo.
 
 This file is part of PrettyFormat.
 
