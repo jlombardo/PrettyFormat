@@ -77,17 +77,31 @@ public class TableFormatter {
     }
     
     /**
-     * Gets the longest line in a collection of lines
+     * Gets the longest line in a collection of lines. This is done the old
+     * way using looping and comparison testing. 
      * @param data a collection of lines
      * @return the longest line
-     * @since JDK 1.8
      */
     public String getLongestLine(String[] data) {
           return Arrays.stream(data)
                   .max(Comparator.comparingInt(String::length))
                   .get();
     }
+ 
+//    public String getLongestLine(String[] data) {
+//        String longestLine = data[0];
+//        
+//        for(int i=0; i < data.length; i++) {
+//            if(data[i].length() > longestLine.length()) {
+//                longestLine = data[i]; 
+//            }
+//        }
+//        
+//        return longestLine;
+//    }
     
+    // This is the new way (using Java 8 Streams)
+   
     /**
      * Left justifies a collection of column data per row with padding
      * @param data a collection of column data per row
