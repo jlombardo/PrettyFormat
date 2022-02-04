@@ -1,40 +1,56 @@
-package edu.wctc.jgl.prettyformat;
+package net.byteshop.util.prettyformat;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.StringJoiner;
 
 /**
- * Provides behaviors for outputting nicely formatted tabular data.
+ * This class is a utility for outputting nicely formatted tabular String data 
+ * where monospaced fonts are used such as at the console and with some GUI 
+ * components.<br>
+ * <br>
+ * It primarily solves the problem of proper column justification where row 
+ * length ane justification needs vary.
  * 
- * @author Jim Lombardo, jlombardo@wctc.edu 
+ * @author Jim Lombardo, jlombardo@wbyteshop.net 
+ * @version 1.01
+ * @since JDK 8
  */
 public class TableFormatter {
+    private static int ROW = 0;
+    private static int COL = 1;
     
     /**
-     * Formats table to with properly justified and spaced columns.
+     * Formats monospaced output table with properly justified and spaced columns. 
+     * This is typically needed for console output but can be used anywhere a 
+     * monospaced table of data can be displayed.
      * 
-     * @param data a 2D array of row/col data
+     * @param data a 2D array of row/col data.
      * @param justifyDir a 1D array of JustifyDirection options for each
-     * column
+     * column in order from left to right relative to the input data
      * @param spacers number of spaces to use between columns
-     * @return table formatted as one large String to be used by an output 
-     * component
-     * @throws IllegalArgumentException if
+     * @return table formatted as one large String to be used for output
+     * @throws IllegalArgumentException when input is null or empty, or when
+     * JustifyDir options don't match column count.
+     * @since JDK 8
      */
     public String toFormattedStr(String[][] data, 
             JustifyDirection[] justifyDir, int spacers) throws IllegalArgumentException {
         
+        if(data == null || justifyDir == null || data.length == 0 || justifyDir.length == 0) {
+            throw new IllegalArgumentException("Input arguments cannot be null or empty");
+        }
+
         // column count should equal JustifyDirection array length
-        if(data == null || justifyDir == null || data[0].length != justifyDir.length) {
-            throw new IllegalArgumentException("JustifyDirection options don't match column length");
+        if(data[COL].length != justifyDir.length) {
+            throw new IllegalArgumentException("JustifyDirection options don't match column count");
         }
         
         StringBuilder sb = 
                 new StringBuilder();
         
         // How many columns do we have
-        int cols = data[0].length;
+        int cols = data[ROW].length;
         
         // justify each data column according to spec in justifyDir and spacers
         for(int colNo=0; colNo < cols; colNo++) {
@@ -77,36 +93,21 @@ public class TableFormatter {
     }
     
     /**
-     * Gets the longest line in a collection of lines. This is done the old
-     * way using looping and comparison testing. 
-     * @param data a collection of lines
-     * @return the longest line
+     * Gets the longest line in a collection of lines (rows).
+     * 
+     * @param data a 1-D collection of lines (rows)
+     * @return the longest line (row)
      */
     public String getLongestLine(String[] data) {
           return Arrays.stream(data)
                   .max(Comparator.comparingInt(String::length))
                   .get();
     }
- 
-//    public String getLongestLine(String[] data) {
-//        String longestLine = data[0];
-//        
-//        for(int i=0; i < data.length; i++) {
-//            if(data[i].length() > longestLine.length()) {
-//                longestLine = data[i]; 
-//            }
-//        }
-//        
-//        return longestLine;
-//    }
-    
-    // This is the new way (using Java 8 Streams)
    
     /**
-     * Left justifies a collection of column data per row with padding
-     * @param data a collection of column data per row
-     * @return a justified collection
-     * @since JDK 1.8
+     * Left justifies a column data for one row using space padding
+     * @param data a collection of column data for one row
+     * @return a justified collection of column data for one row
      */
     public String[] leftJustifyData(String[] data) {
         String longestLine = getLongestLine(data);
@@ -122,10 +123,9 @@ public class TableFormatter {
     }
 
     /**
-     * Right justifies a collection of column data per row with padding
-     * @param data a collection of column data per row
-     * @return a justified collection
-     * @since JDK 1.8
+     * Right justifies a column of data for one row with space padding
+     * @param data a collection of column data for one row
+     * @return a justified collection of column data for one row
      */
     public String[] rightJustifyData(String[] data) {
         String longestLine = getLongestLine(data);

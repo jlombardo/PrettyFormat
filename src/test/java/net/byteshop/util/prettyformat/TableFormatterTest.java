@@ -1,15 +1,13 @@
-package edu.wctc.jgl.prettytermtable;
+package net.byteshop.util.prettyformat;
 
-import edu.wctc.jgl.prettyformat.TableFormatter;
-import edu.wctc.jgl.prettyformat.JustifyDirection;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author jlombardo
+ * Test the TableFormatter class
+ * @author Jim Lombardo, jlombardo@wbyteshop.net 
  */
 public class TableFormatterTest {
     private TableFormatter formatter;
@@ -52,7 +50,7 @@ public class TableFormatterTest {
     @Test
     public void testToFormattedStr() {
         String strFormatted = formatter.toFormattedStr(goodTestData1, goodPads, 2);
-        System.out.println(strFormatted);
+        System.out.println("\n" + strFormatted);
     }
     
     /**
