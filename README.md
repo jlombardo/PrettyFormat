@@ -25,6 +25,6 @@ Example Input:
  Example Output:
  
  |Part No  Description      |  Qty | Unit| Cost | Ext. Price |
- |------- | -----------    |   --- | --------- | ----------  |
+ |------- | -----------    |   ---: | ---------: | ----------:  |
  |A100  |   Brewer Hat     |     2    |  29.95   |    59.90      |
  |B12345  | Mosquito Sprayer |  20   |    9.95   |   199.99     |
