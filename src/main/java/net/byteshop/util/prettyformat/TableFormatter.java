@@ -10,7 +10,7 @@ import java.util.StringJoiner;
  * components.<br>
  * <br>
  * It primarily solves the problem of proper column justification where row 
- * length ane justification needs vary.
+ * length and justification needs vary.
  * 
  * @author Jim Lombardo, jlombardo@wbyteshop.net 
  * @version 1.01
@@ -23,7 +23,32 @@ public class TableFormatter {
     /**
      * Formats monospaced output table with properly justified and spaced columns. 
      * This is typically needed for console output but can be used anywhere a 
-     * monospaced table of data can be displayed.
+     * monospaced table of data can be displayed.<br>
+     * <br>
+     * Example Input:
+     * <pre>
+     * String[][] goodTestData1 = {
+     *      {"Part No","Description","Qty","Unit Cost","Ext. Price"},
+     *      {"-------","-----------","---","---------","----------"},
+     *      {"A100","Brewer Hat","2","29.95","59.90"},
+     *      {"B12345","Mosquito Sprayer","20","9.95","199.99"}
+     *  };
+     *
+     * JustifyDirection[] goodPads = {
+     *      JustifyDirection.LEFT,JustifyDirection.LEFT,
+     *      JustifyDirection.RIGHT,JustifyDirection.RIGHT,
+     *      JustifyDirection.RIGHT
+     *  };
+     *
+     * int spacers = 2;
+     * 
+     * Example Output:
+     * 
+     * Part No  Description       Qty  Unit Cost  Ext. Price
+     * -------  -----------       ---  ---------  ----------
+     * A100     Brewer Hat          2      29.95       59.90
+     * B12345   Mosquito Sprayer   20       9.95      199.99
+     * </pre>
      * 
      * @param data a 2D array of row/col data.
      * @param justifyDir a 1D array of JustifyDirection options for each
