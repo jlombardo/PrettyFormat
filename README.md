@@ -6,7 +6,7 @@ It primarily solves the problem of proper column justification where row length 
 The project was created in the Netbeans IDE but should work in any IDE that supports Maven.
 
 Example Input:
-
+```
  String[][] goodTestData1 = {
       {"Part No","Description","Qty","Unit Cost","Ext. Price"},
       {"-------","-----------","---","---------","----------"},
@@ -21,7 +21,7 @@ Example Input:
   };
 
  int spacers = 2;
- 
+ ```
  Example Output:
  ```
  Part No  Description        Qty  Unit Cost  Ext. Price 
