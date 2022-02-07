@@ -1,12 +1,11 @@
-package net.byteshop.util.prettyformat;
+package net.byteshop.util.string.prettyformat;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.StringJoiner;
+import net.byteshop.util.string.common.GeneralStringUtils;
 
 /**
  * This class is a utility for outputting nicely formatted tabular String data 
- * where monospaced fonts are used such as at the console and with some GUI 
+ * where mono-spaced fonts are used such as at the console and with some GUI 
  * components.<br>
  * <br>
  * It primarily solves the problem of proper column justification where row 
@@ -17,13 +16,13 @@ import java.util.StringJoiner;
  * @since JDK 8
  */
 public class TableFormatter {
-    private static int ROW = 0;
-    private static int COL = 1;
+    private static final int ROW = 0;
+    private static final int COL = 1;
     
     /**
-     * Formats monospaced output table with properly justified and spaced columns. 
+     * Formats mono-spaced output table with properly justified and spaced columns. 
      * This is typically needed for console output but can be used anywhere a 
-     * monospaced table of data can be displayed.<br>
+     * mono-spaced table of data can be displayed.<br>
      * <br>
      * Example Input:
      * <pre>
@@ -60,19 +59,22 @@ public class TableFormatter {
      * @since JDK 8
      */
     public String toFormattedStr(String[][] data, 
-            JustifyDirection[] justifyDir, int spacers) throws IllegalArgumentException {
+            JustifyDirection[] justifyDir, int spacers) 
+            throws IllegalArgumentException {
         
-        if(data == null || justifyDir == null || data.length == 0 || justifyDir.length == 0) {
-            throw new IllegalArgumentException("Input arguments cannot be null or empty");
+        if(data == null || justifyDir == null || data.length == 0 
+                || justifyDir.length == 0) {
+            throw new IllegalArgumentException(
+                    "Input arguments cannot be null or empty");
         }
 
         // column count should equal JustifyDirection array length
         if(data[COL].length != justifyDir.length) {
-            throw new IllegalArgumentException("JustifyDirection options don't match column count");
+            throw new IllegalArgumentException(
+                    "JustifyDirection options don't match column count");
         }
         
-        StringBuilder sb = 
-                new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         
         // How many columns do we have
         int cols = data[ROW].length;
@@ -116,18 +118,6 @@ public class TableFormatter {
         
         return sb.toString();
     }
-    
-    /**
-     * Gets the longest line in a collection of lines (rows).
-     * 
-     * @param data a 1-D collection of lines (rows)
-     * @return the longest line (row)
-     */
-    public String getLongestLine(String[] data) {
-          return Arrays.stream(data)
-                  .max(Comparator.comparingInt(String::length))
-                  .get();
-    }
    
     /**
      * Left justifies a column data for one row using space padding
@@ -135,12 +125,12 @@ public class TableFormatter {
      * @return a justified collection of column data for one row
      */
     public String[] leftJustifyData(String[] data) {
-        String longestLine = getLongestLine(data);
+        String longestLine = GeneralStringUtils.getLongestLine(data);
         
         for(int i=0; i < data.length; i++) {
             int pads = longestLine.length() - data[i].length();
             if(pads > 0) {
-                data[i] = padRight(data[i]," ",pads);
+                data[i] = GeneralStringUtils.padRight(data[i]," ",pads);
             }
         }
         
@@ -153,43 +143,17 @@ public class TableFormatter {
      * @return a justified collection of column data for one row
      */
     public String[] rightJustifyData(String[] data) {
-        String longestLine = getLongestLine(data);
+        String longestLine = GeneralStringUtils.getLongestLine(data);
         
         for(int i=0; i < data.length; i++) {
             int pads = longestLine.length() - data[i].length();
             if(pads > 0) {
-                data[i] = padLeft(data[i]," ", pads);
+                data[i] = GeneralStringUtils.padLeft(data[i]," ", pads);
             }
         }
         
         return data;
     }
-    
-    /**
-     * Pads a String by adding characters to the left
-     * @param str the String to pad
-     * @param padChar the character to use as padding
-     * @param padsToAdd the number of characters to pad
-     * @return the padded String
-     */
-    public String padLeft(String str, String padChar, int padsToAdd) {
-        for (int i = 0; i < padsToAdd; i++)
-            str = padChar + str;
-        return str;
-    }
-    
-    /**
-     * Pads a String by adding characters to the right
-     * @param str the String to pad
-     * @param padChar the character to use as padding
-     * @param padsToAdd the number of characters to pad
-     * @return the padded String
-     */
-    public String padRight(String str, String padChar, int padsToAdd) {
-        for (int i = 0; i < padsToAdd; i++)
-            str += padChar;
-        return str;
-    } 
     
     
 }

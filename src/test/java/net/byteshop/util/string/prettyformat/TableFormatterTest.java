@@ -1,4 +1,4 @@
-package net.byteshop.util.prettyformat;
+package net.byteshop.util.string.prettyformat;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -7,7 +7,10 @@ import static org.junit.Assert.*;
 
 /**
  * Test the TableFormatter class
+ * 
  * @author Jim Lombardo, jlombardo@wbyteshop.net 
+ * @version 1.01
+ * @since JDK 8
  */
 public class TableFormatterTest {
     private TableFormatter formatter;
@@ -95,40 +98,5 @@ public class TableFormatterTest {
         }
     }
 
-    /**
-     * Test of getLongestLine method, of class TableFormatter.
-     */
-    @Test
-    public void testGetLongestLine() {
-        String expected = "xxxxxxxxx";
-        String actual = formatter.getLongestLine(goodTestColData);
-        assertTrue("Longest line search failed", actual.equals(expected));
-    }
-
-    /**
-     * Test of padleft method, of class TableFormatter.
-     */
-    @Test
-    public void testPadLeft() {
-        String testStr = "xx";
-        int testPadLen = 9;
-        int expectedLen = 11;
-        String resultStr = formatter.padLeft(testStr, "x", testPadLen);
-        //System.out.println(resultStr);
-        assertTrue("Pad Left failed", resultStr.length() == expectedLen);
-    }
-
-    /**
-     * Test of padRight method, of class TableFormatter.
-     */
-    @Test
-    public void testPadRight() {
-        String testStr = "xx";
-        int testPadLen = 9;
-        int expectedLen = 11;
-        String resultStr = formatter.padRight(testStr, "x", testPadLen);
-        //System.out.println(resultStr);
-        assertTrue("Pad Left failed", resultStr.length() == expectedLen);
-    }
     
 }
