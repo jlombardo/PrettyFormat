@@ -79,6 +79,28 @@ public class TableFormatter {
         // How many columns do we have
         int cols = data[ROW].length;
         
+        justifyColumns(cols, data, justifyDir);
+        
+        // now produce spacing between columns
+        String spacing = "";
+        for(int i=0; i < spacers; i++) {
+            spacing += " ";
+        }
+        StringJoiner sj = new StringJoiner(spacing);
+        
+        // Finally, output formatted column with spacing
+        for(int row = 0; row < data.length; row++) {
+            for(int col = 0; col < cols; col++) {
+                sj.add(data[row][col]);
+            }
+            sb.append(sj.toString()).append("\n");
+            sj = new StringJoiner(spacing);
+        }
+        
+        return sb.toString();
+    }
+
+    private void justifyColumns(int cols, String[][] data, JustifyDirection[] justifyDir) {
         // justify each data column according to spec in justifyDir and spacers
         for(int colNo=0; colNo < cols; colNo++) {
             // first gather column data into a temp array
@@ -99,24 +121,6 @@ public class TableFormatter {
                 data[row][colNo] = colData[row];
             }
         }
-        
-        // now produce spacing between columns
-        String spacing = "";
-        for(int i=0; i < spacers; i++) {
-            spacing += " ";
-        }
-        StringJoiner sj = new StringJoiner(spacing);
-        
-        // Finally, output formatted column with spacing
-        for(int row = 0; row < data.length; row++) {
-            for(int col = 0; col < cols; col++) {
-                sj.add(data[row][col]);
-            }
-            sb.append(sj.toString()).append("\n");
-            sj = new StringJoiner(spacing);
-        }
-        
-        return sb.toString();
     }
    
     /**
