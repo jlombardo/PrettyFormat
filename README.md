@@ -29,3 +29,10 @@ Example Input:
  A100     Brewer Hat           2      29.95       59.90      
  B12345   Mosquito Sprayer    20       9.95      199.99     
 ```
+**Notes:**
+- master branch is the current production grade branch
+- demo1-before-refactor is an example of what this project might look like 
+  before refactoring for better encapsulation and cohesion
+- demo1-after-refactor is an example of what the project should look like 
+  after refactoring for better encapsulation and cohesion. It also adds and 
+  reorganizes Junit tests. This branch should mirror the master branch.
