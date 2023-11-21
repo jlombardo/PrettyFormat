@@ -3,7 +3,7 @@ package net.byteshop.util.string.prettyformat;
 /**
  * Specifies String-based table column justification options
  * 
- * @author Jim Lombardo, jlombardo@wbyteshop.net 
+ * @author Jim Lombardo, jlombardo@byteshop.net 
  * @version 1.01
  * @since JDK 8
  */

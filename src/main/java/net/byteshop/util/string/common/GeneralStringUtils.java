@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * Some basic text handling utilities.
  *
- * @author Jim Lombardo, jlombardo@wbyteshop.net
+ * @author Jim Lombardo, jlombardo@byteshop.net
  * @version 1.01
  * @since JDK 8
  */

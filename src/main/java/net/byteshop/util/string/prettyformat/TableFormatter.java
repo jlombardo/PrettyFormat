@@ -11,7 +11,7 @@ import net.byteshop.util.string.common.GeneralStringUtils;
  * It primarily solves the problem of proper column justification where row 
  * length and justification needs vary.
  * 
- * @author Jim Lombardo, jlombardo@wbyteshop.net 
+ * @author Jim Lombardo, jlombardo@byteshop.net 
  * @version 1.01
  * @since JDK 8
  */
